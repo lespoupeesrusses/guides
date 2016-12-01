@@ -1,4 +1,4 @@
-# Stylesheets and preprocessors
+# Stylesheets and Preprocessors
 
 ```sass
 .component
@@ -7,9 +7,11 @@
   
 ```
 
-Max component naming level: 3
+**Maximum nested BEM levels: 3**
 
 ## Lectures
+
+* [CSSReference.io](http://cssreference.io)
 * [MaintainableCSS](http://maintainablecss.com)
 * [MarkSheet](http://marksheet.io)
 * [Leveling up in CSS](https://medium.freecodecamp.com/leveling-up-css-44b5045a2667#.nhxv8jpq8)
