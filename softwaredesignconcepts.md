@@ -14,11 +14,17 @@
 
 ### Kinds
 
-- Object Oriented Programming
-- Function Programming
+- Object Oriented Programming (Ruby)
+- Functionnal Programming (Haskell, Lisp, Clojure)
+- Protocol Oriented Programming (Swift)
 
-### Pattern
+### Patterns
 
 - Observers
 - Decorators: add functionnalities to object in specific context (éviter les classes surchargées inutilements)
 - Presenters: bridge between Model and View
+
+### Paradigms
+
+- Pub/Sub (used for event IO cases)
+- Reactive programming
