@@ -26,3 +26,7 @@ class User < ActiveRecord::Base
 
 end
 ```
+
+## ActiveRecord
+
+- Counter Cache
