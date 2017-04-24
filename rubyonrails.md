@@ -30,3 +30,4 @@ end
 ## ActiveRecord
 
 - Counter Cache
+- Pagination
