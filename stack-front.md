@@ -2,6 +2,8 @@
 
 ## Gestion des assets
 
+Possibilités: Codekit, grunt, gulp, fire.app, Middleman
+
 Solution validée: Middleman
 
 yarn
