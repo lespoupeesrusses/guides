@@ -22,6 +22,7 @@ Pour se faire, nous utilisons la gem middleman sync et un bucket s3 spécifique.
 /Gemfile
 ```
 gem 'middleman-s3_sync'
+gem 'mime-types'
 ```
 
 /config.rb (ask @pabois or @arnaudlevy for real data)
