@@ -40,5 +40,9 @@ end
 
 - Sass
 - reset Meyer
-- js pur es5
 - bootstrap 3 (pas foundation, etc)
+
+## JS
+- js pur es5 (pas encore es6)
+- si besoin jquery  
+- si besoin Angular 1 ou Vue, à confirmer
