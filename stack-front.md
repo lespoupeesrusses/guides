@@ -35,3 +35,10 @@ activate :s3_sync do |s3_sync|
   s3_sync.after_build                = true
 end
 ```
+
+## CSS
+
+- Sass
+- reset Meyer
+- js pur es5
+- bootstrap 3 (pas foundation, etc)
