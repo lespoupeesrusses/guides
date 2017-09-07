@@ -80,3 +80,9 @@ Pour lier dans une vue
         </Table>
       </Worksheet>
     </Workbook>
+
+## Mails transactionnels
+
+Addon Sendgrid in Heroku
+
+https://devcenter.heroku.com/articles/sendgrid#ruby
