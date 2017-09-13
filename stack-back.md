@@ -86,3 +86,8 @@ Pour lier dans une vue
 Addon Sendgrid in Heroku
 
 https://devcenter.heroku.com/articles/sendgrid#ruby
+
+## Syntaxe
+
+Pas de `<%-`, c'est idem à `<%`
+Addon Sendgrid in Heroku
