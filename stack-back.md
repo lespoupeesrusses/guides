@@ -103,6 +103,7 @@ gem 'bugsnag'                    # Exception catching
 gem 'redis-rails'                # Cache db
 gem 'newrelic_rpm'               # Apdex
 ```
+
 ### Redis
 Policy should be allkeys-lru (https://devcenter.heroku.com/articles/heroku-redis#maxmemory-policy)
 ```
