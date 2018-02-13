@@ -67,3 +67,10 @@ end
 - js pur es5 (pas encore es6)
 - si besoin jquery  
 - si besoin Angular 1 ou Vue, à confirmer
+
+## Large files
+
+https://git-lfs.github.com/
+```
+git lfs track "*.mp4"
+```
