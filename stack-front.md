@@ -9,7 +9,27 @@ Solution validée: Middleman
 yarn
 middleman
 bootstrap 4
-jquery 
+jquery
+
+## Chargement des dépendances
+
+On inclut les dépendances avec Sprockets.
+
+/Gemfile
+```
+gem 'middleman-sprockets'
+```
+/config.rb
+```
+activate :sprockets
+activate :relative_assets
+
+sprockets.append_path File.join "#{root}", 'node_modules'
+```
+En tête du fichier .js, appeler les répendences avec un require, par exemple :
+```
+//= require modernizr.js
+```
 
 ## Livraison
 
