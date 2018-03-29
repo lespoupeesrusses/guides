@@ -26,7 +26,7 @@ activate :relative_assets
 
 sprockets.append_path File.join "#{root}", 'node_modules'
 ```
-En tête du fichier .js, appeler les répendences avec un require, par exemple :
+En tête du fichier .js, appeler les dépendences avec un require, par exemple :
 ```
 //= require modernizr.js
 ```
