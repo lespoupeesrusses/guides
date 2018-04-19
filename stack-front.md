@@ -74,3 +74,9 @@ https://git-lfs.github.com/
 ```
 git lfs track "*.mp4"
 ```
+
+## NPM
+
+Si NPM est utilisé dans le projet, il n'est pas nécéssaire d'inclure le dossier `npm_modules` dans le `.gitignore`. Il est également conseillé d'intaller `npm-shrinkwrap` pour garantir une meilleure stabilité.
+Source :
+https://www.quora.com/Should-I-put-node_modules-in-gitignore
