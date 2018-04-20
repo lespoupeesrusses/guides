@@ -286,7 +286,8 @@ Si on a besoin d'un framework lourd, ne devrions nous pas faire du js vanille? S
 ### Stylesheets
 
 #### Reset: Eric Meyer
-Alternatives refusées: Normalize
+Alternatives refusées: Normalize 
+Sauf si on utilise Bootsrap, auqeul cas Normalize est inclus
 
 #### Préprocesseur: SASS
 Alternatives refusées: Less (trop de syntaxe)
