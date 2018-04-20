@@ -34,7 +34,7 @@ Guides
             - Framework léger: AngularJS \(Angular 1\)
             - Framework lourd: ?
         - Stylesheets
-            - Reset: Eric Meyer
+            - Reset: Eric Meyer (si pas d'utilisation de Bootstrap, sinon Bootstrap se base sur normalize)
             - Préprocesseur: SASS
             - Framework: Bootstrap 4
             - Méthodologie: BEM
