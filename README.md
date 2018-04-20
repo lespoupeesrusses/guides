@@ -9,6 +9,7 @@ Guides
     - Base de données Postgresql
     - Editeur de code
     - Gestionnaire de version de Node
+    - Gros fichiers
 - Back end
     - App
     - Authentification
@@ -22,13 +23,28 @@ Guides
         - Gemfile
         - Redis
 - Front end
-    - Gestion des assets
-    - Chargement des dépendances
-    - Livraison
-    - CSS
-    - JS
-    - Large files
-    - Gestion des dépendances javascript
+    - Infrastructure
+        - Middleman
+    - Assets
+        - Dépendances
+        - Javascript
+            - Package manager: Yarn
+            - Version de javascript: ES5
+            - Librairie légère: jQuery 3
+            - Framework léger: AngularJS \(Angular 1\)
+            - Framework lourd: ?
+        - Stylesheets
+            - Reset: Eric Meyer
+            - Préprocesseur: SASS
+            - Framework: Bootstrap 4
+            - Méthodologie: BEM
+        - Images
+            - Svg
+        - Videos
+        - Icons
+    - Déploiement
+        - Staging
+        - Production
 - Sources et références
 
 <!-- /MarkdownTOC -->
@@ -69,8 +85,12 @@ Possibilités: NVM
 
 Solution validée: NVM https://github.com/creationix/nvm
 
+## Gros fichiers
 
-
+https://git-lfs.github.com/
+```
+git lfs track "*.mp4"
+```
 
 
 
@@ -193,18 +213,24 @@ heroku redis:maxmemory --policy allkeys-lru
 
 # Front end
 
-## Gestion des assets
+## Infrastructure
 
-Possibilités: Codekit, grunt, gulp, fire.app, Middleman
+### Middleman 
 
-Solution validée: Middleman
+Gestion (minification, concaténation, rangement...)
+
+Autres possibilités: Codekit, grunt, gulp, fire.app, Middleman
 
 yarn
 middleman
 bootstrap 4
 jquery 3
 
-## Chargement des dépendances
+
+
+## Assets
+
+### Dépendances 
 
 On inclut les dépendances avec Sprockets.
 
@@ -224,7 +250,79 @@ En tête du fichier .js, appeler les dépendences avec un require, par exemple :
 //= require modernizr.js
 ```
 
-## Livraison
+### Javascript
+
+#### Package manager: Yarn
+Alternatives refusées: NPM (trop lent)
+
+Le dossier node_modules ne doit pas être commit, il faut l'ajouter au .gitignore.
+
+Il y a des débats sur le sujet: 
+https://www.quora.com/Should-I-put-node_modules-in-gitignore
+https://chaseadams.io/2015/07/my-gitignore-conventions/
+...
+Certes, le fait de le commit permet d'avoir en permanence un dossier fonctionnel, même des années après. 
+Le fait de ne pas le commit respecte le principe de la liste des dépendances. Si on utilise un gestionnaire de dépendance, on le fait correctement. Sinon on n'en utilise pas.
+
+Les .gitignore par défaut de Github Node et Rails ajoutent node_modules/.
+
+
+#### Version de javascript: ES5
+Alternatives refusées: ES6 avec Babel et le cortège d'outils pour transpiler.
+
+- js pur es5 (pas encore es6)
+- si besoin jquery 3
+- si besoin Angular 1
+- yarn
+
+#### Librairie légère: jQuery 3
+
+#### Framework léger: AngularJS (Angular 1)
+Alternatives refusées: Angular 2 (trop typescript, trop verbeux, sans amélioration en contrepartie), Ember (trop compliqué), React (trop compliqué), Vue (trop dépendant d'ES6), Backbone (syntaxe toute pourrie, peu de features)
+
+#### Framework lourd: ?
+Si on a besoin d'un framework lourd, ne devrions nous pas faire du js vanille? Sujet compliqué, à discuter au cas par cas. En fonction des specs, React ou Vue peuvent-être de bons choix.
+
+### Stylesheets
+
+#### Reset: Eric Meyer
+Alternatives refusées: Normalize
+
+#### Préprocesseur: SASS
+Alternatives refusées: Less (trop de syntaxe)
+
+#### Framework: Bootstrap 4
+Alternatives refusées: Bootstrap 3 (sauf legacy), Foundation, Zurb
+On utilise un framework pour écrire moins de code CSS et JS, donc pas la peine de le mettre pour l'ignorer et tout réécrire.
+
+#### Méthodologie: BEM
+Alternative refusées: SMACSS
+Attention, BEM est difficilement compatible avec Bootstrap, et orientée application client. Ce n'est pas un bon choix pour un pur markup sémantique.
+
+### Images
+
+Compression
+png / jpg
+
+#### Svg
+Les svg sont pratiques pour l'indépendance de résolution, pour l'animation, et pour l'interactivité.
+
+2 cas : 
+- soit on l'utilise comme une icône/image, et on l'intègre avec une balise img
+- soit on l'utilise de manière plus créative, et on l'intègre inline (gem 'inline_svg')
+Objectif : pouvoir manipuler le svg comme on veut, et le mettre en cache (donc pas inline).
+
+### Videos
+
+mp4 ou Vimeo/Youtube
+
+### Icons
+
+font-awesome
+
+## Déploiement
+
+### Staging
 
 Les projets doivent se livrer pour recette en une ligne de commande :
 ```
@@ -250,31 +348,10 @@ activate :s3_sync do |s3_sync|
 end
 ```
 
-## CSS
+### Production
 
-- Sass
-- reset Meyer
-- bootstrap 4 (pas foundation, etc)
-
-## JS
-
-- js pur es5 (pas encore es6)
-- si besoin jquery 3
-- si besoin Angular 1
-
-## Large files
-
-https://git-lfs.github.com/
-```
-git lfs track "*.mp4"
-```
-
-## Gestion des dépendances javascript
-
-Le dossier node_modules doit être commit. Pas de .gitignore dessus.
-
-Il y a beaucoup de débat sur le sujet (cf https://www.quora.com/Should-I-put-node_modules-in-gitignore), pas de consensus clair. 
-Le fait de le commit permet d'avoir en permanence un dossier fonctionnel, même des années après. 
+Plusieurs possibilités, mais la meilleure à l'heure actuelle est Netlify.
+Le déploiement se fait au commit, donc il faut une branche dev une fois le site en prod.
 
 
 
