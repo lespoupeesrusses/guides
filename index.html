@@ -1,0 +1,566 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Use the title from a page's frontmatter if it has one -->
+    <title>Guide du développeur</title>
+    <link href="/guides/stylesheets/site.css" rel="stylesheet" />
+    <script src="/guides/javascripts/site.js"></script>
+  </head>
+  <body>
+    <header>
+      <div class="navbar navbar-dark bg-dark box-shadow">
+        <div class="container d-flex justify-content-between">
+          <a href="#" class="navbar-brand d-flex align-items-center">
+            <strong>Les Poupées Russes : guide du développeur</strong>
+          </a>
+        </div>
+      </div>
+    </header>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-8">
+          <h1 id="configuration-standard">Configuration standard</h1>
+
+<p>Les ordinateurs des développeurs doivent utiliser cette configuration.</p>
+
+<h2 id="gestionnaire-de-package">Gestionnaire de package</h2>
+
+<p>Homebrew <a href="https://brew.sh/index_fr.html">https://brew.sh/index_fr.html</a></p>
+
+<p>Autres possibilités: Macports</p>
+
+<h2 id="gestionnaires-de-version-de-ruby">Gestionnaires de version de Ruby</h2>
+
+<p>rbenv <a href="https://github.com/rbenv/rbenv">https://github.com/rbenv/rbenv</a></p>
+
+<p>Autres possibilités: RVM</p>
+
+<h2 id="base-de-donn-es-postgresql">Base de données Postgresql</h2>
+
+<p>PostgresApp (<a href="https://postgresapp.com/">https://postgresapp.com/</a>)</p>
+
+<p>Possibilités: binaires, homebrew</p>
+
+<h2 id="editeur-de-code">Editeur de code</h2>
+
+<p>Aucun en particulier, tant que les fichiers générés par l&#39;éditeur sont ajoutés au .gitignore</p>
+
+<p>Possibilités: Notepad++, Sublime Text, Atom, Visual Studio, Eclipse, Komodo&hellip;</p>
+
+<h2 id="gestionnaire-de-version-de-node">Gestionnaire de version de Node</h2>
+
+<p>NVM (<a href="https://github.com/creationix/nvm">https://github.com/creationix/nvm</a>)</p>
+
+<h2 id="gros-fichiers">Gros fichiers</h2>
+
+<p><a href="https://git-lfs.github.com/">https://git-lfs.github.com/</a></p>
+<div class="highlight"><pre class="highlight plaintext"><code>git lfs track "*.mp4"
+</code></pre></div>
+<h1 id="back-end">Back end</h1>
+
+<h2 id="app">App</h2>
+
+<p>rails 5.2</p>
+
+<h2 id="authentification">Authentification</h2>
+
+<p>devise</p>
+
+<h2 id="attachments">Attachments</h2>
+
+<p>activestorage</p>
+
+<h2 id="storage">Storage</h2>
+
+<p>AWS-SDK (v2)</p>
+
+<h2 id="eviter-linjection-javascript">Eviter l&#39;injection javascript</h2>
+<div class="highlight"><pre class="highlight ruby"><code><span class="k">def</span> <span class="nf">sanitize_fields</span>
+  <span class="n">full_sanitizer</span> <span class="o">=</span> <span class="no">Rails</span><span class="o">::</span><span class="no">Html</span><span class="o">::</span><span class="no">FullSanitizer</span><span class="p">.</span><span class="nf">new</span>
+  <span class="n">white_list</span> <span class="o">=</span> <span class="no">Rails</span><span class="o">::</span><span class="no">Html</span><span class="o">::</span><span class="no">WhiteListSanitizer</span><span class="p">.</span><span class="nf">new</span>
+
+  <span class="c1"># Only text allowed</span>
+  <span class="nb">self</span><span class="p">.</span><span class="nf">email</span> <span class="o">=</span> <span class="n">full_sanitizer</span><span class="p">.</span><span class="nf">sanitize</span><span class="p">(</span><span class="nb">self</span><span class="p">.</span><span class="nf">email</span><span class="p">)</span>
+  <span class="nb">self</span><span class="p">.</span><span class="nf">name</span> <span class="o">=</span> <span class="n">full_sanitizer</span><span class="p">.</span><span class="nf">sanitize</span><span class="p">(</span><span class="nb">self</span><span class="p">.</span><span class="nf">name</span><span class="p">)</span>
+  <span class="nb">self</span><span class="p">.</span><span class="nf">firstname</span> <span class="o">=</span> <span class="n">full_sanitizer</span><span class="p">.</span><span class="nf">sanitize</span><span class="p">(</span><span class="nb">self</span><span class="p">.</span><span class="nf">firstname</span><span class="p">)</span>
+  <span class="nb">self</span><span class="p">.</span><span class="nf">gender</span> <span class="o">=</span> <span class="n">full_sanitizer</span><span class="p">.</span><span class="nf">sanitize</span><span class="p">(</span><span class="nb">self</span><span class="p">.</span><span class="nf">gender</span><span class="p">)</span>
+  <span class="nb">self</span><span class="p">.</span><span class="nf">mobile</span> <span class="o">=</span> <span class="n">full_sanitizer</span><span class="p">.</span><span class="nf">sanitize</span><span class="p">(</span><span class="nb">self</span><span class="p">.</span><span class="nf">mobile</span><span class="p">)</span>
+  <span class="nb">self</span><span class="p">.</span><span class="nf">pos</span> <span class="o">=</span> <span class="n">full_sanitizer</span><span class="p">.</span><span class="nf">sanitize</span><span class="p">(</span><span class="nb">self</span><span class="p">.</span><span class="nf">pos</span><span class="p">)</span>
+  <span class="nb">self</span><span class="p">.</span><span class="nf">address</span> <span class="o">=</span> <span class="n">full_sanitizer</span><span class="p">.</span><span class="nf">sanitize</span><span class="p">(</span><span class="nb">self</span><span class="p">.</span><span class="nf">address</span><span class="p">)</span>
+  <span class="nb">self</span><span class="p">.</span><span class="nf">zipcode</span> <span class="o">=</span> <span class="n">full_sanitizer</span><span class="p">.</span><span class="nf">sanitize</span><span class="p">(</span><span class="nb">self</span><span class="p">.</span><span class="nf">zipcode</span><span class="p">)</span>
+  <span class="nb">self</span><span class="p">.</span><span class="nf">city</span> <span class="o">=</span> <span class="n">full_sanitizer</span><span class="p">.</span><span class="nf">sanitize</span><span class="p">(</span><span class="nb">self</span><span class="p">.</span><span class="nf">city</span><span class="p">)</span>
+<span class="k">end</span>
+</code></pre></div>
+<h2 id="export-excel">Export Excel</h2>
+
+<p>/config/initializers/mime_types.rb</p>
+<div class="highlight"><pre class="highlight plaintext"><code>Mime::Type.register "application/xls", :xls
+</code></pre></div>
+<p>Rien de spécial dans les routes</p>
+
+<p>Pour lier dans une vue</p>
+<div class="highlight"><pre class="highlight plaintext"><code>&lt;%= link_to 'Sponsorings', admin_sponsorings_path(format: :xls) %&gt;
+</code></pre></div>
+<p>/controllers/admin/users_controller.rb</p>
+<div class="highlight"><pre class="highlight plaintext"><code>class Admin::UsersController &lt; Admin::ApplicationController
+    respond_to do |format|
+      format.xls { @sponsorings = Sponsoring.export_for_country @filter_country }
+    end
+end
+</code></pre></div>
+<p>/views/admin/users/sponsorings.xls.erb</p>
+<div class="highlight"><pre class="highlight xml"><code><span class="cp">&lt;?xml version="1.0"?&gt;</span>
+<span class="nt">&lt;Workbook</span> <span class="na">xmlns=</span><span class="s">"urn:schemas-microsoft-com:office:spreadsheet"</span>
+  <span class="na">xmlns:o=</span><span class="s">"urn:schemas-microsoft-com:office:office"</span>
+  <span class="na">xmlns:x=</span><span class="s">"urn:schemas-microsoft-com:office:excel"</span>
+  <span class="na">xmlns:ss=</span><span class="s">"urn:schemas-microsoft-com:office:spreadsheet"</span>
+  <span class="na">xmlns:html=</span><span class="s">"http://www.w3.org/TR/REC-html40"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;Worksheet</span> <span class="na">ss:Name=</span><span class="s">"Sheet1"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;Table&gt;</span>
+      <span class="nt">&lt;Row&gt;</span>
+        <span class="err">&lt;</span>% keys = @sponsorings.try(:first).try(:keys) || [] %&gt;
+        <span class="err">&lt;</span>% keys.each do |name| %&gt;
+            <span class="nt">&lt;Cell&gt;&lt;Data</span> <span class="na">ss:Type=</span><span class="s">"String"</span><span class="nt">&gt;</span><span class="err">&lt;</span>%= name %&gt;<span class="nt">&lt;/Data&gt;&lt;/Cell&gt;</span>
+        <span class="err">&lt;</span>% end %&gt;
+    <span class="nt">&lt;/Row&gt;</span>
+    <span class="err">&lt;</span>% @sponsorings.each do |sponsoring| %&gt;
+      <span class="nt">&lt;Row&gt;</span>
+        <span class="err">&lt;</span>% sponsoring.values.each do |value| %&gt;
+            <span class="nt">&lt;Cell&gt;&lt;Data</span> <span class="na">ss:Type=</span><span class="s">"String"</span><span class="nt">&gt;</span><span class="err">&lt;</span>%= value %&gt;<span class="nt">&lt;/Data&gt;&lt;/Cell&gt;</span>
+        <span class="err">&lt;</span>% end %&gt;
+      <span class="nt">&lt;/Row&gt;</span>
+    <span class="err">&lt;</span>% end %&gt;
+    <span class="nt">&lt;/Table&gt;</span>
+  <span class="nt">&lt;/Worksheet&gt;</span>
+<span class="nt">&lt;/Workbook&gt;</span>
+</code></pre></div>
+<h2 id="mails-transactionnels">Mails transactionnels</h2>
+
+<p>Addon Sendgrid in Heroku</p>
+
+<p><a href="https://devcenter.heroku.com/articles/sendgrid#ruby">https://devcenter.heroku.com/articles/sendgrid#ruby</a></p>
+
+<h2 id="syntaxe">Syntaxe</h2>
+
+<p>Pas de <code>&lt;%-</code>, c&#39;est idem à <code>&lt;%</code></p>
+
+<h2 id="infrastructure">Infrastructure</h2>
+
+<h3 id="gemfile">Gemfile</h3>
+<div class="highlight"><pre class="highlight plaintext"><code># Infrastructure
+gem 'puma'                       # Server
+gem 'pg', '0.21.0'               # Database
+gem 'bugsnag'                    # Exception catching
+gem 'redis-rails'                # Cache db
+gem 'newrelic_rpm'               # Apdex
+</code></pre></div>
+<h3 id="redis">Redis</h3>
+
+<p>Policy should be allkeys-lru (<a href="https://devcenter.heroku.com/articles/heroku-redis#maxmemory-policy">https://devcenter.heroku.com/articles/heroku-redis#maxmemory-policy</a>)</p>
+<div class="highlight"><pre class="highlight plaintext"><code>heroku redis:maxmemory --policy allkeys-lru
+</code></pre></div>
+<h1 id="front-end">Front end</h1>
+
+<h2 id="infrastructure">Infrastructure</h2>
+
+<h3 id="middleman">Middleman</h3>
+
+<p>Gestion (minification, concaténation, rangement&hellip;)</p>
+
+<p>Autres possibilités: Codekit, grunt, gulp, fire.app, Middleman</p>
+
+<h2 id="composants">Composants</h2>
+
+<h3 id="carousel-slider">Carousel/Slider</h3>
+
+<p>Possibilités : Bootstrap carousel (très limité), Owl (fonctionne correctement), Slick (en cours de test), Siema (pas de dépendance jQuery)</p>
+
+<h3 id="file-upload">File upload</h3>
+
+<p>Pour jQuery: Dropzone.js (<a href="http://www.dropzonejs.com/">http://www.dropzonejs.com/</a>)
+Autres possibilités: Dropfile (<a href="http://adodson.com/dropfile/">http://adodson.com/dropfile/</a>)</p>
+
+<p>Pour AngularJS: ng-file-upload (<a href="https://github.com/danialfarid/ng-file-upload/">https://github.com/danialfarid/ng-file-upload/</a>)
+Autres possibilités: <a href="https://github.com/nervgh/angular-file-upload/">https://github.com/nervgh/angular-file-upload/</a></p>
+
+<h3 id="nav-de-one-page-ancres">Nav de one-page (ancres)</h3>
+
+<p>Scrollspy</p>
+
+<p>Autres possibilités: Gumshoe (avec SmoothScro)</p>
+
+<h3 id="animations-au-scroll">Animations au scroll</h3>
+
+<p>ScrollReveal pour les animations au scroll</p>
+
+<h3 id="animations-en-s-quence">Animations en séquence</h3>
+
+<p>Pas de consensus</p>
+
+<p>Greensock Tween (très lourd mais compat ie9)</p>
+
+<h3 id="notices-en-popin">Notices en popin</h3>
+
+<p>toastr</p>
+
+<h3 id="images-en-popin">Images en popin</h3>
+
+<p>Natif bootstrap</p>
+
+<p>Autres possibilités: Fancybox</p>
+
+<h3 id="interactions-mobiles">Interactions mobiles</h3>
+
+<p>Hammer.js
+jQuery mobile (catastrophique sur My Redken)</p>
+
+<h3 id="mises-en-page-sp-cifiques-type-pinterest">Mises en page spécifiques (type pinterest)</h3>
+
+<p>Masonry
+CSS Flex</p>
+
+<h2 id="assets">Assets</h2>
+
+<h3 id="d-pendances">Dépendances</h3>
+
+<p>On inclut les dépendances avec Sprockets.</p>
+
+<p>/Gemfile</p>
+<div class="highlight"><pre class="highlight plaintext"><code>gem 'middleman-sprockets'
+</code></pre></div>
+<p>/config.rb
+    activate :sprockets
+    activate :relative_assets</p>
+<div class="highlight"><pre class="highlight plaintext"><code>sprockets.append_path File.join "#{root}", 'node_modules'
+</code></pre></div>
+<p>En tête du fichier .js, appeler les dépendences avec un require, par exemple :
+    //= require modernizr.js</p>
+
+<h3 id="javascript">Javascript</h3>
+
+<h4 id="package-manager-yarn">Package manager: Yarn</h4>
+
+<p>Alternatives refusées: NPM (trop lent)</p>
+
+<p>Le dossier node_modules ne doit pas être commit, il faut l&#39;ajouter au .gitignore.</p>
+
+<p>Il y a des débats sur le sujet: 
+<a href="https://www.quora.com/Should-I-put-node_modules-in-gitignore">https://www.quora.com/Should-I-put-node_modules-in-gitignore</a>
+<a href="https://chaseadams.io/2015/07/my-gitignore-conventions/">https://chaseadams.io/2015/07/my-gitignore-conventions/</a>
+etc.
+Certes, le fait de le commit permet d&#39;avoir en permanence un dossier fonctionnel, même des années après. 
+Le fait de ne pas le commit respecte le principe de la liste des dépendances. Si on utilise un gestionnaire de dépendance, on le fait correctement. Sinon on n&#39;en utilise pas.</p>
+
+<p>Les .gitignore par défaut de Github Node et Rails ajoutent node_modules/.</p>
+
+<h4 id="version-de-javascript-es5">Version de javascript: ES5</h4>
+
+<p>Alternatives refusées: ES6 avec Babel et le cortège d&#39;outils pour transpiler.</p>
+
+<ul>
+<li>js pur es5 (pas encore es6)</li>
+<li>si besoin jquery 3</li>
+<li>si besoin Angular 1</li>
+<li>yarn</li>
+</ul>
+
+<h4 id="librairie-l-g-re-jquery-3">Librairie légère: jQuery 3</h4>
+
+<h4 id="framework-l-ger">Framework léger</h4>
+
+<p>AngularJS (Angular 1)</p>
+
+<p>Alternatives refusées: Angular 2 (trop typescript, trop verbeux, sans amélioration en contrepartie), Ember (trop compliqué), React (trop compliqué), Vue (trop dépendant d&#39;ES6), Backbone (syntaxe toute pourrie, peu de features)</p>
+
+<h4 id="framework-lourd">Framework lourd</h4>
+
+<p>?</p>
+
+<p>Si on a besoin d&#39;un framework lourd, ne devrions nous pas faire du js vanille? Sujet compliqué, à discuter au cas par cas. En fonction des specs, React ou Vue peuvent-être de bons choix.</p>
+
+<h3 id="stylesheets">Stylesheets</h3>
+
+<h4 id="reset">Reset</h4>
+
+<p>Eric Meyer</p>
+
+<p>Alternatives refusées: Normalize 
+Sauf si on utilise Bootsrap, auqeul cas Normalize est inclus</p>
+
+<h4 id="pr-processeur">Préprocesseur</h4>
+
+<p>SASS</p>
+
+<p>Alternatives refusées: Less (trop de syntaxe)</p>
+
+<h4 id="framework">Framework</h4>
+
+<p>Bootstrap 4</p>
+
+<p>Alternatives refusées: Bootstrap 3 (sauf legacy), Foundation, Zurb
+On utilise un framework pour écrire moins de code CSS et JS, donc pas la peine de le mettre pour l&#39;ignorer et tout réécrire.</p>
+
+<h4 id="m-thodologie">Méthodologie</h4>
+
+<p>BEM</p>
+
+<p>Alternative refusées: SMACSS
+Attention, BEM est difficilement compatible avec Bootstrap, et orienté application client. Ce n&#39;est pas un bon choix pour un pur markup sémantique.</p>
+
+<h3 id="images">Images</h3>
+
+<p>Compression
+png / jpg</p>
+
+<h4 id="svg">Svg</h4>
+
+<p>Les svg sont pratiques pour l&#39;indépendance de résolution, pour l&#39;animation, et pour l&#39;interactivité.</p>
+
+<p>2 cas : 
+- soit on l&#39;utilise comme une icône/image, et on l&#39;intègre avec une balise img
+- soit on l&#39;utilise de manière plus créative, et on l&#39;intègre inline (gem &lsquo;inline<em>svg&rsquo; mais attention inline</em>svg n&#39;arrive pas à travailler avec des svg hébergés sur S3, dont l&#39;url ne finit pas forcément par .svg)
+Objectif : pouvoir manipuler le svg comme on veut, et le mettre en cache (donc pas inline).</p>
+
+<h3 id="videos">Videos</h3>
+
+<p>mp4 ou Vimeo/Youtube</p>
+
+<h3 id="icons">Icons</h3>
+
+<p>font-awesome</p>
+
+<h2 id="d-ploiement">Déploiement</h2>
+
+<h3 id="staging">Staging</h3>
+
+<p>Les projets doivent se livrer pour recette en une ligne de commande :</p>
+<div class="highlight"><pre class="highlight plaintext"><code>middleman build
+</code></pre></div>
+<p>Pour se faire, nous utilisons la gem middleman sync et un bucket s3 spécifique.</p>
+
+<p>/Gemfile</p>
+<div class="highlight"><pre class="highlight plaintext"><code>gem 'middleman-s3_sync'
+gem 'mime-types'
+</code></pre></div>
+<p>/config.rb (ask @pabois or @arnaudlevy for real data)</p>
+<div class="highlight"><pre class="highlight plaintext"><code>activate :s3_sync do |s3_sync|
+  s3_sync.bucket                     = 'type bucket name here'
+  s3_sync.region                     = 'type region here'
+  s3_sync.aws_access_key_id          = 'type access here'
+  s3_sync.aws_secret_access_key      = 'type secret here'
+  s3_sync.prefix                     = 'type path here'
+  s3_sync.after_build                = true
+end
+</code></pre></div>
+<h3 id="production">Production</h3>
+
+<p>Plusieurs possibilités, mais la meilleure à l&#39;heure actuelle est Netlify.
+Le déploiement se fait au commit, donc il faut une branche dev une fois le site en prod.</p>
+
+<h1 id="sources-et-r-f-rences">Sources et références</h1>
+
+<ul>
+<li><a href="https://github.com/bbatsov/ruby-style-guide">https://github.com/bbatsov/ruby-style-guide</a></li>
+<li><a href="https://github.com/thoughtbot/guides">https://github.com/thoughtbot/guides</a></li>
+<li><a href="http://cssreference.io">CSSReference.io</a></li>
+<li><a href="http://maintainablecss.com">MaintainableCSS</a></li>
+<li><a href="http://marksheet.io">MarkSheet</a></li>
+<li><a href="https://medium.freecodecamp.com/leveling-up-css-44b5045a2667#.nhxv8jpq8">Leveling up in CSS</a></li>
+<li><a href="https://www.chenhuijing.com/blog/how-well-do-you-know-display/#=~">How well do you know CSS display?</a></li>
+</ul>
+
+        </div>
+        <div class="col-md-4">
+          <ul>
+<li>
+<a href="#configuration-standard">Configuration standard</a>
+<ul>
+<li>
+<a href="#gestionnaire-de-package">Gestionnaire de package</a>
+</li>
+<li>
+<a href="#gestionnaires-de-version-de-ruby">Gestionnaires de version de Ruby</a>
+</li>
+<li>
+<a href="#base-de-donn-es-postgresql">Base de données Postgresql</a>
+</li>
+<li>
+<a href="#editeur-de-code">Editeur de code</a>
+</li>
+<li>
+<a href="#gestionnaire-de-version-de-node">Gestionnaire de version de Node</a>
+</li>
+<li>
+<a href="#gros-fichiers">Gros fichiers</a>
+</li>
+</ul>
+</li>
+<li>
+<a href="#back-end">Back end</a>
+<ul>
+<li>
+<a href="#app">App</a>
+</li>
+<li>
+<a href="#authentification">Authentification</a>
+</li>
+<li>
+<a href="#attachments">Attachments</a>
+</li>
+<li>
+<a href="#storage">Storage</a>
+</li>
+<li>
+<a href="#eviter-l-injection-javascript">Eviter l'injection javascript</a>
+</li>
+<li>
+<a href="#export-excel">Export Excel</a>
+</li>
+<li>
+<a href="#mails-transactionnels">Mails transactionnels</a>
+</li>
+<li>
+<a href="#syntaxe">Syntaxe</a>
+</li>
+<li>
+<a href="#infrastructure">Infrastructure</a>
+<ul>
+<li>
+<a href="#gemfile">Gemfile</a>
+</li>
+<li>
+<a href="#redis">Redis</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<a href="#front-end">Front end</a>
+<ul>
+<li>
+<a href="#infrastructure">Infrastructure</a>
+<ul>
+<li>
+<a href="#middleman">Middleman</a>
+</li>
+</ul>
+</li>
+<li>
+<a href="#composants">Composants</a>
+<ul>
+<li>
+<a href="#carousel-slider">Carousel/Slider</a>
+</li>
+<li>
+<a href="#file-upload">File upload</a>
+</li>
+<li>
+<a href="#nav-de-one-page-ancres">Nav de one-page (ancres)</a>
+</li>
+<li>
+<a href="#animations-au-scroll">Animations au scroll</a>
+</li>
+<li>
+<a href="#animations-en-s-quence">Animations en séquence</a>
+</li>
+<li>
+<a href="#notices-en-popin">Notices en popin</a>
+</li>
+<li>
+<a href="#images-en-popin">Images en popin</a>
+</li>
+<li>
+<a href="#interactions-mobiles">Interactions mobiles</a>
+</li>
+<li>
+<a href="#mises-en-page-sp-cifiques-type-pinterest">Mises en page spécifiques (type pinterest)</a>
+</li>
+</ul>
+</li>
+<li>
+<a href="#assets">Assets</a>
+<ul>
+<li>
+<a href="#d-pendances">Dépendances</a>
+</li>
+<li>
+<a href="#javascript">Javascript</a>
+<ul>
+<li>
+<a href="#package-manager-yarn">Package manager: Yarn</a>
+</li>
+<li>
+<a href="#version-de-javascript-es5">Version de javascript: ES5</a>
+</li>
+<li>
+<a href="#librairie-l-g-re-jquery-3">Librairie légère: jQuery 3</a>
+</li>
+<li>
+<a href="#framework-l-ger">Framework léger</a>
+</li>
+<li>
+<a href="#framework-lourd">Framework lourd</a>
+</li>
+</ul>
+</li>
+<li>
+<a href="#stylesheets">Stylesheets</a>
+<ul>
+<li>
+<a href="#reset">Reset</a>
+</li>
+<li>
+<a href="#pr-processeur">Préprocesseur</a>
+</li>
+<li>
+<a href="#framework">Framework</a>
+</li>
+<li>
+<a href="#m-thodologie">Méthodologie</a>
+</li>
+</ul>
+</li>
+<li>
+<a href="#images">Images</a>
+<ul>
+<li>
+<a href="#svg">Svg</a>
+</li>
+</ul>
+</li>
+<li>
+<a href="#videos">Videos</a>
+</li>
+<li>
+<a href="#icons">Icons</a>
+</li>
+</ul>
+</li>
+<li>
+<a href="#d-ploiement">Déploiement</a>
+<ul>
+<li>
+<a href="#staging">Staging</a>
+</li>
+<li>
+<a href="#production">Production</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<a href="#sources-et-r-f-rences">Sources et références</a>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
