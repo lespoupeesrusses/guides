@@ -26,10 +26,15 @@ Guides
     - Infrastructure
         - Middleman
     - Composants
-        - Slider : ?
+        - Carousel/Slider : ?
         - File upload
             - Pour jQuery: Dropzone.js \(http://www.dropzonejs.com/\)
             - Pour AngularJS: ng-file-upload \(https://github.com/danialfarid/ng-file-upload/\)
+        - Nav de one page avec ancres: Scrollspy
+        - Animations au scroll: ScrollReveal
+        - Animations en séquence: ?
+        - Notices en popin: toastr
+        - Images en popin: natif bootstrap
     - Assets
         - Dépendances
         - Javascript
@@ -228,18 +233,31 @@ Autres possibilités: Codekit, grunt, gulp, fire.app, Middleman
 
 ## Composants
 
-### Slider : ?
+### Carousel/Slider : ?
 
 Possibilités : Bootstrap carousel (très limité), Owl (fonctionne correctement), Slick (en cours de test), Siema (pas de dépendance jQuery)
 
 ### File upload
 
 #### Pour jQuery: Dropzone.js (http://www.dropzonejs.com/)
-
 Autres possibilités: Dropfile (http://adodson.com/dropfile/)
 
 #### Pour AngularJS: ng-file-upload (https://github.com/danialfarid/ng-file-upload/)
 Autres possibilités: https://github.com/nervgh/angular-file-upload/
+
+### Nav de one page avec ancres: Scrollspy
+Autres possibilités: Gumshoe (avec SmoothScro)
+
+### Animations au scroll: ScrollReveal
+ScrollReveal pour les animations au scroll
+
+### Animations en séquence: ?
+Greensock Tween (très lourd mais compat ie9)
+
+### Notices en popin: toastr
+
+### Images en popin: natif bootstrap
+Autres possibilités: Fancybox
 
 ## Assets
 
@@ -310,7 +328,7 @@ On utilise un framework pour écrire moins de code CSS et JS, donc pas la peine 
 
 #### Méthodologie: BEM
 Alternative refusées: SMACSS
-Attention, BEM est difficilement compatible avec Bootstrap, et orientée application client. Ce n'est pas un bon choix pour un pur markup sémantique.
+Attention, BEM est difficilement compatible avec Bootstrap, et orienté application client. Ce n'est pas un bon choix pour un pur markup sémantique.
 
 ### Images
 
