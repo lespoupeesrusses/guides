@@ -4,23 +4,23 @@ Les ordinateurs des développeurs doivent utiliser cette configuration.
 
 ## Packages systèmes
 
-Homebrew https://brew.sh/index_fr.html
+**Homebrew** https://brew.sh/index_fr.html
 
 Autres possibilités: Macports
 
-## Version de Ruby
+## Versions de Ruby
 
-rbenv https://github.com/rbenv/rbenv
+**Rbenv** https://github.com/rbenv/rbenv
 
 Autres possibilités: RVM
 
-## Version de Node
+## Versions de Node
 
-NVM (https://github.com/creationix/nvm)
+**NVM** https://github.com/creationix/nvm
 
 ## Base de données Postgresql 
 
-PostgresApp (https://postgresapp.com/)
+**PostgresApp** https://postgresapp.com/
 
 Possibilités: binaires, homebrew
 
@@ -31,6 +31,8 @@ Aucun en particulier, tant que les fichiers générés par l'éditeur sont ajout
 Possibilités: Notepad++, Sublime Text, Atom, Visual Studio, Eclipse, Komodo...
 
 ## Gros fichiers
+
+**LFS**
 
 https://git-lfs.github.com/
 
