@@ -351,7 +351,7 @@ Les svg sont pratiques pour l'indépendance de résolution, pour l'animation, et
 
 2 cas : 
 - soit on l'utilise comme une icône/image, et on l'intègre avec une balise img
-- soit on l'utilise de manière plus créative, et on l'intègre inline (gem 'inline_svg')
+- soit on l'utilise de manière plus créative, et on l'intègre inline (gem 'inline_svg'). Attention inline_svg n'arrive pas à travailler avec des svg hébergés sur S3.
 Objectif : pouvoir manipuler le svg comme on veut, et le mettre en cache (donc pas inline).
 
 ### Videos
