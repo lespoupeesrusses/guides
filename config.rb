@@ -18,3 +18,7 @@ helpers do
 end
 
 activate :sprockets
+
+activate :deploy do |deploy|
+  deploy.deploy_method = :git
+end
