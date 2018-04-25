@@ -37,6 +37,26 @@ https://git-lfs.github.com/
     git lfs track "*.mp4"
 
 
+## Dépendances javascript
+
+1. D'abord une gem si elle existe
+2. Sinon, soit une intégration dans vendor, soit un package management avec Yarn
+
+Validé:  Yarn
+
+Alternatives refusées: NPM (trop lent)
+
+Le dossier node_modules ne doit pas être commit, il faut l'ajouter au .gitignore.
+
+Il y a des débats sur le sujet: 
+https://www.quora.com/Should-I-put-node_modules-in-gitignore
+https://chaseadams.io/2015/07/my-gitignore-conventions/
+etc.
+
+Certes, le fait de le commit permet d'avoir en permanence un dossier fonctionnel, même des années après. 
+Le fait de ne pas le commit respecte le principe de la liste des dépendances. Si on utilise un gestionnaire de dépendance, on le fait correctement. Sinon on n'en utilise pas.
+
+Les .gitignore par défaut de Github Node et Rails ajoutent node_modules/.
 
 
 # Back end
@@ -156,19 +176,29 @@ Policy should be allkeys-lru (https://devcenter.heroku.com/articles/heroku-redis
 
 # Front end
 
-## Infrastructure
-
-### Middleman 
+Validé: Middleman
 
 Gestion (minification, concaténation, rangement...)
 
-Autres possibilités: Codekit, grunt, gulp, fire.app, Middleman
+Autres possibilités:
+
+- Codekit
+- grunt
+- gulp
+- fire.app
 
 ## Composants
 
 ### Carousel/Slider
 
-Possibilités : Bootstrap carousel (très limité), Owl (fonctionne correctement), Slick (en cours de test), Siema (pas de dépendance jQuery)
+Validé: ?
+
+Possibilités: 
+
+- Bootstrap carousel (très limité)
+- Owl (fonctionne correctement)
+- Slick (en cours de test)
+- Siema (pas de dépendance jQuery)
 
 ### File upload
 
@@ -212,12 +242,14 @@ Autres possibilités: Fancybox
 Validé: ?
 
 Possibilités:
+
 - Hammer.js
 - jQuery mobile (catastrophique sur My Redken)
 
 ### Mises en page spécifiques (type pinterest)
 
 Possibilités:
+
 - Masonry
 - CSS Flex
 
@@ -232,30 +264,16 @@ On inclut les dépendances avec Sprockets.
     gem 'middleman-sprockets'
 
 /config.rb
+
     activate :sprockets
     activate :relative_assets
-
     sprockets.append_path File.join "#{root}", 'node_modules'
 
 En tête du fichier .js, appeler les dépendences avec un require, par exemple :
+
     //= require modernizr.js
 
 ### Javascript
-
-#### Package manager: Yarn
-Alternatives refusées: NPM (trop lent)
-
-Le dossier node_modules ne doit pas être commit, il faut l'ajouter au .gitignore.
-
-Il y a des débats sur le sujet: 
-https://www.quora.com/Should-I-put-node_modules-in-gitignore
-https://chaseadams.io/2015/07/my-gitignore-conventions/
-etc.
-Certes, le fait de le commit permet d'avoir en permanence un dossier fonctionnel, même des années après. 
-Le fait de ne pas le commit respecte le principe de la liste des dépendances. Si on utilise un gestionnaire de dépendance, on le fait correctement. Sinon on n'en utilise pas.
-
-Les .gitignore par défaut de Github Node et Rails ajoutent node_modules/.
-
 
 #### Version de javascript: ES5
 Alternatives refusées: ES6 avec Babel et le cortège d'outils pour transpiler.
