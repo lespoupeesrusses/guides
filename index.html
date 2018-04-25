@@ -3,9 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <meta name="viewport"
-          content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <!-- Use the title from a page's frontmatter if it has one -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>Guide du développeur</title>
     <link href="/guides/stylesheets/site.css" rel="stylesheet" />
     <script src="/guides/javascripts/site.js"></script>
@@ -60,6 +58,29 @@
 <p><a href="https://git-lfs.github.com/">https://git-lfs.github.com/</a></p>
 <div class="highlight"><pre class="highlight plaintext"><code>git lfs track "*.mp4"
 </code></pre></div>
+<h2 id="d-pendances-javascript">Dépendances javascript</h2>
+
+<ol>
+<li>D&#39;abord une gem si elle existe</li>
+<li>Sinon, soit une intégration dans vendor, soit un package management avec Yarn</li>
+</ol>
+
+<p>Validé:  Yarn</p>
+
+<p>Alternatives refusées: NPM (trop lent)</p>
+
+<p>Le dossier node_modules ne doit pas être commit, il faut l&#39;ajouter au .gitignore.</p>
+
+<p>Il y a des débats sur le sujet: 
+<a href="https://www.quora.com/Should-I-put-node_modules-in-gitignore">https://www.quora.com/Should-I-put-node_modules-in-gitignore</a>
+<a href="https://chaseadams.io/2015/07/my-gitignore-conventions/">https://chaseadams.io/2015/07/my-gitignore-conventions/</a>
+etc.</p>
+
+<p>Certes, le fait de le commit permet d&#39;avoir en permanence un dossier fonctionnel, même des années après. 
+Le fait de ne pas le commit respecte le principe de la liste des dépendances. Si on utilise un gestionnaire de dépendance, on le fait correctement. Sinon on n&#39;en utilise pas.</p>
+
+<p>Les .gitignore par défaut de Github Node et Rails ajoutent node_modules/.</p>
+
 <h1 id="back-end">Back end</h1>
 
 <h2 id="app">App</h2>
@@ -259,30 +280,15 @@ gem 'newrelic_rpm'               # Apdex
 <p>/Gemfile</p>
 <div class="highlight"><pre class="highlight plaintext"><code>gem 'middleman-sprockets'
 </code></pre></div>
-<p>/config.rb
-    activate :sprockets
-    activate :relative_assets</p>
-<div class="highlight"><pre class="highlight plaintext"><code>sprockets.append_path File.join "#{root}", 'node_modules'
+<p>/config.rb</p>
+<div class="highlight"><pre class="highlight plaintext"><code>activate :sprockets
+activate :relative_assets
+sprockets.append_path File.join "#{root}", 'node_modules'
 </code></pre></div>
-<p>En tête du fichier .js, appeler les dépendences avec un require, par exemple :
-    //= require modernizr.js</p>
-
+<p>En tête du fichier .js, appeler les dépendences avec un require, par exemple :</p>
+<div class="highlight"><pre class="highlight plaintext"><code>//= require modernizr.js
+</code></pre></div>
 <h3 id="javascript">Javascript</h3>
-
-<h4 id="package-manager-yarn">Package manager: Yarn</h4>
-
-<p>Alternatives refusées: NPM (trop lent)</p>
-
-<p>Le dossier node_modules ne doit pas être commit, il faut l&#39;ajouter au .gitignore.</p>
-
-<p>Il y a des débats sur le sujet: 
-<a href="https://www.quora.com/Should-I-put-node_modules-in-gitignore">https://www.quora.com/Should-I-put-node_modules-in-gitignore</a>
-<a href="https://chaseadams.io/2015/07/my-gitignore-conventions/">https://chaseadams.io/2015/07/my-gitignore-conventions/</a>
-etc.
-Certes, le fait de le commit permet d&#39;avoir en permanence un dossier fonctionnel, même des années après. 
-Le fait de ne pas le commit respecte le principe de la liste des dépendances. Si on utilise un gestionnaire de dépendance, on le fait correctement. Sinon on n&#39;en utilise pas.</p>
-
-<p>Les .gitignore par défaut de Github Node et Rails ajoutent node_modules/.</p>
 
 <h4 id="version-de-javascript-es5">Version de javascript: ES5</h4>
 
@@ -401,7 +407,7 @@ Le déploiement se fait au commit, donc il faut une branche dev une fois le site
 </ul>
 
         </div>
-        <div class="col-md-4">
+        <div class="col-md-4 toc">
           <ul>
 <li>
 <a href="#configuration-standard">Configuration standard</a>
@@ -423,6 +429,9 @@ Le déploiement se fait au commit, donc il faut une branche dev une fois le site
 </li>
 <li>
 <a href="#gros-fichiers">Gros fichiers</a>
+</li>
+<li>
+<a href="#d-pendances-javascript">Dépendances javascript</a>
 </li>
 </ul>
 </li>
@@ -510,9 +519,6 @@ Le déploiement se fait au commit, donc il faut une branche dev une fois le site
 <li>
 <a href="#javascript">Javascript</a>
 <ul>
-<li>
-<a href="#package-manager-yarn">Package manager: Yarn</a>
-</li>
 <li>
 <a href="#version-de-javascript-es5">Version de javascript: ES5</a>
 </li>
