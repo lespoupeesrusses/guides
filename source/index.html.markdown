@@ -2,17 +2,21 @@
 
 Les ordinateurs des développeurs doivent utiliser cette configuration.
 
-## Gestionnaire de package
+## Packages systèmes
 
 Homebrew https://brew.sh/index_fr.html
 
 Autres possibilités: Macports
 
-## Gestionnaires de version de Ruby
+## Version de Ruby
 
 rbenv https://github.com/rbenv/rbenv
 
 Autres possibilités: RVM
+
+## Version de Node
+
+NVM (https://github.com/creationix/nvm)
 
 ## Base de données Postgresql 
 
@@ -25,10 +29,6 @@ Possibilités: binaires, homebrew
 Aucun en particulier, tant que les fichiers générés par l'éditeur sont ajoutés au .gitignore
 
 Possibilités: Notepad++, Sublime Text, Atom, Visual Studio, Eclipse, Komodo...
-
-## Gestionnaire de version de Node
-
-NVM (https://github.com/creationix/nvm)
 
 ## Gros fichiers
 
