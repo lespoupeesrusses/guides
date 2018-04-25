@@ -35,6 +35,7 @@ Guides
         - Animations en séquence: ?
         - Notices en popin: toastr
         - Images en popin: natif bootstrap
+        - Interactions mobiles
     - Assets
         - Dépendances
         - Javascript
@@ -259,6 +260,10 @@ Greensock Tween (très lourd mais compat ie9)
 ### Images en popin: natif bootstrap
 Autres possibilités: Fancybox
 
+### Interactions mobiles
+Hammer.js
+jQuery mobile (catastrophique sur My Redken)
+
 ## Assets
 
 ### Dépendances 
@@ -317,7 +322,8 @@ Si on a besoin d'un framework lourd, ne devrions nous pas faire du js vanille? S
 ### Stylesheets
 
 #### Reset: Eric Meyer
-Alternatives refusées: Normalize
+Alternatives refusées: Normalize 
+Sauf si on utilise Bootsrap, auqeul cas Normalize est inclus
 
 #### Préprocesseur: SASS
 Alternatives refusées: Less (trop de syntaxe)
