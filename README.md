@@ -36,6 +36,7 @@ Guides
         - Notices en popin: toastr
         - Images en popin: natif bootstrap
         - Interactions mobiles
+        - Mises en page spécifiques \(type pinterest\)
     - Assets
         - Dépendances
         - Javascript
@@ -263,6 +264,10 @@ Autres possibilités: Fancybox
 ### Interactions mobiles
 Hammer.js
 jQuery mobile (catastrophique sur My Redken)
+
+### Mises en page spécifiques (type pinterest)
+Masonry
+CSS Flex
 
 ## Assets
 
