@@ -25,6 +25,11 @@ Guides
 - Front end
     - Infrastructure
         - Middleman
+    - Composants
+        - Slider : ?
+        - File upload
+            - Pour jQuery: Dropzone.js \(http://www.dropzonejs.com/\)
+            - Pour AngularJS: ng-file-upload \(https://github.com/danialfarid/ng-file-upload/\)
     - Assets
         - Dépendances
         - Javascript
@@ -221,12 +226,20 @@ Gestion (minification, concaténation, rangement...)
 
 Autres possibilités: Codekit, grunt, gulp, fire.app, Middleman
 
-yarn
-middleman
-bootstrap 4
-jquery 3
+## Composants
 
+### Slider : ?
 
+Possibilités : Bootstrap carousel (très limité), Owl (fonctionne correctement), Slick (en cours de test), Siema (pas de dépendance jQuery)
+
+### File upload
+
+#### Pour jQuery: Dropzone.js (http://www.dropzonejs.com/)
+
+Autres possibilités: Dropfile (http://adodson.com/dropfile/)
+
+#### Pour AngularJS: ng-file-upload (https://github.com/danialfarid/ng-file-upload/)
+Autres possibilités: https://github.com/nervgh/angular-file-upload/
 
 ## Assets
 
