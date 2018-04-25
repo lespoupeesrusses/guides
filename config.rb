@@ -6,7 +6,7 @@ activate :autoprefixer do |prefix|
 end
 
 set :markdown_engine, :redcarpet
-set :markdown, with_toc_data: true, tables: true, autolink: true, gh_blockcode: true, fenced_code_blocks: true
+set :markdown, with_toc_data: true, tables: true, autolink: true, gh_blockcode: true, fenced_code_blocks: true, smartypants: true
 
 helpers do
   def table_of_contents(resource)
@@ -18,7 +18,12 @@ helpers do
 end
 
 activate :sprockets
+activate :syntax
 
 activate :deploy do |deploy|
+  deploy.build_before = true
   deploy.deploy_method = :git
 end
+
+# FIXME problem with dev / prod, too hungry to fix now. Arnaud
+set :http_prefix, '/guides'

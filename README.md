@@ -7,4 +7,4 @@ Setup with `bundle`
 
 Work locally with `middleman`
 
-Deploy with `rake publish`
+Deploy with `middleman deploy`

@@ -59,21 +59,23 @@ AWS-SDK (v2)
 
 ## Eviter l'injection javascript 
 
-    def sanitize_fields
-      full_sanitizer = Rails::Html::FullSanitizer.new
-      white_list = Rails::Html::WhiteListSanitizer.new
+```ruby
+def sanitize_fields
+  full_sanitizer = Rails::Html::FullSanitizer.new
+  white_list = Rails::Html::WhiteListSanitizer.new
 
-      # Only text allowed
-      self.email = full_sanitizer.sanitize(self.email)
-      self.name = full_sanitizer.sanitize(self.name)
-      self.firstname = full_sanitizer.sanitize(self.firstname)
-      self.gender = full_sanitizer.sanitize(self.gender)
-      self.mobile = full_sanitizer.sanitize(self.mobile)
-      self.pos = full_sanitizer.sanitize(self.pos)
-      self.address = full_sanitizer.sanitize(self.address)
-      self.zipcode = full_sanitizer.sanitize(self.zipcode)
-      self.city = full_sanitizer.sanitize(self.city)
-    end
+  # Only text allowed
+  self.email = full_sanitizer.sanitize(self.email)
+  self.name = full_sanitizer.sanitize(self.name)
+  self.firstname = full_sanitizer.sanitize(self.firstname)
+  self.gender = full_sanitizer.sanitize(self.gender)
+  self.mobile = full_sanitizer.sanitize(self.mobile)
+  self.pos = full_sanitizer.sanitize(self.pos)
+  self.address = full_sanitizer.sanitize(self.address)
+  self.zipcode = full_sanitizer.sanitize(self.zipcode)
+  self.city = full_sanitizer.sanitize(self.city)
+end
+```
 
 ## Export Excel
 
@@ -171,44 +173,53 @@ Possibilités : Bootstrap carousel (très limité), Owl (fonctionne correctement
 ### File upload
 
 Pour jQuery: Dropzone.js (http://www.dropzonejs.com/)
+
 Autres possibilités: Dropfile (http://adodson.com/dropfile/)
 
 Pour AngularJS: ng-file-upload (https://github.com/danialfarid/ng-file-upload/)
+
 Autres possibilités: https://github.com/nervgh/angular-file-upload/
 
 ### Nav de one-page (ancres)
 
-Scrollspy
+Validé: Scrollspy
 
-Autres possibilités: Gumshoe (avec SmoothScro)
+Autres possibilités: 
+- Gumshoe (avec SmoothScro)
 
 ### Animations au scroll
 
-ScrollReveal pour les animations au scroll
+Validé: ScrollReveal
 
 ### Animations en séquence
 
-Pas de consensus
+Validé: ?
 
 Greensock Tween (très lourd mais compat ie9)
 
 ### Notices en popin
 
-toastr
+Validé: toastr
 
 ### Images en popin
 
-Natif bootstrap
+Validé: Natif bootstrap
 
 Autres possibilités: Fancybox
 
 ### Interactions mobiles
-Hammer.js
-jQuery mobile (catastrophique sur My Redken)
+
+Validé: ?
+
+Possibilités:
+- Hammer.js
+- jQuery mobile (catastrophique sur My Redken)
 
 ### Mises en page spécifiques (type pinterest)
-Masonry
-CSS Flex
+
+Possibilités:
+- Masonry
+- CSS Flex
 
 ## Assets
 
