@@ -1,10 +1,3 @@
-Guide du développeur
-======
+Ce projet est obsolète, tout est maintenant dans 
 
-https://lespoupeesrusses.github.io/guides/
-
-Setup with `bundle`
-
-Work locally with `middleman`
-
-Deploy with `middleman deploy`
+http://maison.lespoupees.paris/
